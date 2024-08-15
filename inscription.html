@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mexicom</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            max-width: 400px;
+            width: 100%;
+            background-color: #1c1c1c;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+        }
+        .container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #333;
+            color: #ffffff;
+        }
+        .form-group input:focus {
+            outline: none;
+            background-color: #444;
+        }
+        .btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #0d6efd;
+            border: none;
+            border-radius: 4px;
+            color: #ffffff;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .toggle-btn {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .toggle-btn a {
+            color: #0d6efd;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .toggle-btn a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 id="form-title">BIENVENUE SUR LA PLATEFORME MEXICOM</h2>
+        <form id="auth-form" onsubmit="redirectToPage(event)">
+            <!-- Form fields go here -->
+            <div id="form-content">
+                <div class="form-group">
+                    <label for="nom">Nom et prénom</label>
+                    <input type="text" id="nom" name="nom" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Mode de passe</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirm_password">Confirmer le mode de passe</label>
+                    <input type="password" id="confirm_password" name="confirm_password" required>
+                </div>
+                <div class="form-group">
+                    <label for="parrainage">Code de parrainage</label>
+                    <input type="text" id="parrainage" name="parrainage" required>
+                </div>
+            </div>
+            <button type="submit" class="btn">S'inscrire</button>
+        </form>
+        <div class="toggle-btn">
+            <a href="#" onclick="toggleForm(event)">Déjà inscrit? Connectez-vous ici</a>
+        </div>
+    </div>
+
+    <script>
+        function redirectToPage(event) {
+            event.preventDefault(); 
+            window.location.href = 'https://mexicom.github.io/Mexicom/index.html';
+        }
+
+        function toggleForm(event) {
+            event.preventDefault();
+            const formContent = document.getElementById('form-content');
+            const formTitle = document.getElementById('form-title');
+            const toggleLink = document.querySelector('.toggle-btn a');
+            const submitButton = document.querySelector('.btn');
+
+            if (submitButton.textContent === "S'inscrire") {
+                // Switch to login form
+                formContent.innerHTML = `
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Mode de passe</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                `;
+                formTitle.textContent = "Connectez-vous à MEXICOM";
+                submitButton.textContent = "Se connecter";
+                toggleLink.textContent = "Pas encore inscrit? Inscrivez-vous ici";
+            } else {
+                // Switch to registration form
+                formContent.innerHTML = `
+                    <div class="form-group">
+                        <label for="nom">Nom et prénom</label>
+                        <input type="text" id="nom" name="nom" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Mode de passe</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm_password">Confirmer le mode de passe</label>
+                        <input type="password" id="confirm_password" name="confirm_password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="parrainage">Code de parrainage</label>
+                        <input type="text" id="parrainage" name="parrainage" required>
+                    </div>
+                `;
+                formTitle.textContent = "BIENVENUE SUR LA PLATEFORME MEXICOM";
+                submitButton.textContent = "S'inscrire";
+                toggleLink.textContent = "Déjà inscrit? Connectez-vous ici";
+            }
+        }
+    </script>
+</body>
+</html>

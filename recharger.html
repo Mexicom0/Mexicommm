@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recharge</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding-bottom: 120px; /* espace pour le pied de page */
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 600px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        .payment-info {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .payment-info p {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            box-sizing: border-box;
+        }
+
+        .form-group input[type="file"] {
+            padding: 0;
+        }
+
+        .submit-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            background-color: #007bff;
+            color: #ffffff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .submit-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Rechargez Votre Compte Mexicom</h1>
+
+    <div class="payment-info">
+        <p>Veuillez choisir l'un des numéros et faites le paiement :</p>
+        <p><strong>MTN MONEY</strong><br>+225 0554049897</p>
+        <p><strong>MOOV MONEY</strong><br>0140719995</p>
+        <p><strong>ORANGE MONEY</strong><br>0703037591</p>
+        <p><strong>WAVE CI</strong><br>0703037591</p>
+    </div>
+
+    <form action="#" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="amount">Montant à Recharger</label>
+            <input type="number" id="amount" name="amount" required>
+        </div>
+
+        <div class="form-group">
+            <label for="payment-number">Numéro de Paiement</label>
+            <input type="text" id="payment-number" name="payment-number" required>
+        </div>
+
+        <div class="form-group">
+            <label for="transaction-id">ID de Transaction</label>
+            <input type="text" id="transaction-id" name="transaction-id" required>
+        </div>
+
+        <div class="form-group">
+            <label for="payment-proof">Preuves de Paiement</label>
+            <input type="file" id="payment-proof" name="payment-proof" required>
+        </div>
+
+        <button type="submit" class="submit-button">Soumettre</button>
+    </form>
+</div>
+
+</body>
+</html>

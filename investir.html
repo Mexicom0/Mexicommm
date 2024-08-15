@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investir</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        .vip-plan {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .vip-plan h2 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .vip-plan p {
+            margin: 5px 0;
+            font-size: 16px;
+        }
+
+        .invest-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #ffffff;
+            background-color: #28a745; /* Couleur verte */
+            text-align: center;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+
+        .invest-button:hover {
+            background-color: #218838;
+        }
+
+        .error-message {
+            color: #dc3545; /* Couleur rouge pour les erreurs */
+            text-align: center;
+            font-weight: bold;
+            display: none; /* Cacher le message par défaut */
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Investissez Maintenant</h1>
+
+    <div class="vip-plan">
+        <h2>VIP 1 - 6.000 FCFA</h2>
+        <p>Revenus par heure : 600 FCFA</p>
+        <p>Revenus quotidiens : 3.000 FCFA</p>
+        <p>Total : 75.000 FCFA</p>
+        <a href="#" class="invest-button" onclick="checkBalance(6000, this)">Investir</a>
+        <p class="error-message">Solde insuffisant</p>
+    </div>
+
+    <div class="vip-plan">
+        <h2>VIP 2 - 8.500 FCFA</h2>
+        <p>Revenus par heure : 850 FCFA</p>
+        <p>Revenus quotidiens : 4.250 FCFA</p>
+        <p>Total : 106.250 FCFA</p>
+        <a href="#" class="invest-button" onclick="checkBalance(8500, this)">Investir</a>
+        <p class="error-message">Solde insuffisant</p>
+    </div>
+
+    <div class="vip-plan">
+        <h2>VIP 3 - 10.000 FCFA</h2>
+        <p>Revenus par heure : 1.000 FCFA</p>
+        <p>Revenus quotidiens : 5.000 FCFA</p>
+        <p>Total : 125.000 FCFA</p>
+        <a href="#" class="invest-button" onclick="checkBalance(10000, this)">Investir</a>
+        <p class="error-message">Solde insuffisant</p>
+    </div>
+
+    <div class="vip-plan">
+        <h2>VIP 4 - 15.000 FCFA</h2>
+        <p>Revenus par heure : 1.500 FCFA</p>
+        <p>Revenus quotidiens : 7.500 FCFA</p>
+        <p>Total : 187.500 FCFA</p>
+        <a href="#" class="invest-button" onclick="checkBalance(15000, this)">Investir</a>
+        <p class="error-message">Solde insuffisant</p>
+    </div>
+
+    <div class="vip-plan">
+        <h2>VIP 5 - 20.000 FCFA</h2>
+        <p>Revenus par heure : 2.000 FCFA</p>
+        <p>Revenus quotidiens : 10.000 FCFA</p>
+        <p>Total : 250.000 FCFA</p>
+        <a href="#" class="invest-button" onclick="checkBalance(20000, this)">Investir</a>
+        <p class="error-message">Solde insuffisant</p>
+    </div>
+
+    <div class="vip-plan">
+        <h2>VIP 6 - 30.000 FCFA</h2>
+        <p>Revenus par heure : 3.000 FCFA</p>
+        <p>Revenus quotidiens : 15.000 FCFA</p>
+        <p>Total : 375.000 FCFA</p>
+        <a href="#" class="invest-button" onclick="checkBalance(30000, this)">Investir</a>
+        <p class="error-message">Solde insuffisant</p>
+    </div>
+
+    <div class="vip-plan">
+        <h2>VIP 7 - 40.000 FCFA</h2>
+        <p>Revenus par heure : 4.000 FCFA</p>
+        <p>Revenus quotidiens : 20.000 FCFA</p>
+        <p>Total : 500.000 FCFA</p>
+        <a href="#" class="invest-button" onclick="checkBalance(40000, this)">Investir</a>
+        <p class="error-message">Solde insuffisant</p>
+    </div>
+
+    <div class="vip-plan">
+        <h2>VIP 8 - 50.000 FCFA</h2>
+        <p>Revenus par heure : 5.000 FCFA</p>
+        <p>Revenus quotidiens : 25.000 FCFA</p>
+        <p>Total : 625.000 FCFA</p>
+        <a href="#" class="invest-button" onclick="checkBalance(50000, this)">Investir</a>
+        <p class="error-message">Solde insuffisant</p>
+    </div>
+
+    <div class="vip-plan">
+        <h2>VIP 9 - 80.000 FCFA</h2>
+        <p>Revenus par heure : 8.000 FCFA</p>
+        <p>Revenus quotidiens : 40.000 FCFA</p>
+        <p>Total : 1.000.000 FCFA</p>
+        <a href="#" class="invest-button" onclick="checkBalance(80000, this)">Investir</a>
+        <p class="error-message">Solde insuffisant</p>
+    </div>
+
+    <div class="vip-plan">
+        <h2>VIP 10 - 115.000 FCFA</h2>
+        <p>Revenus par heure : 11.500 FCFA</p>
+        <p>Revenus quotidiens : 57.000 FCFA</p>
+        <p>Total : 1.437.500 FCFA</p>
+        <a href="#" class="invest-button" onclick="checkBalance(115000, this)">Investir</a>
+        <p class="error-message">Solde insuffisant</p>
+    </div>
+</div>
+
+<script>
+    function checkBalance(requiredAmount, buttonElement) {
+        // Exemple de solde, à remplacer par une vérification réelle
+        var currentBalance = 115000; // Remplacez cette valeur par le solde réel de l'utilisateur
+
+        var errorMessage = buttonElement.nextElementSibling; // Sélectionner le message d'erreur suivant le bouton
+        if (currentBalance >= requiredAmount) {
+            // Code pour effectuer l'investissement
+            alert('Investissement de ' + requiredAmount + ' FCFA solde insuffisant !');
+            // Redirection ou autres actions nécessaires
+        } else {
+            // Afficher le message d'erreur
+            errorMessage.style.display = 'block';
+        }
+    }
+</script>
+
+</body>
+</html>

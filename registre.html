@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000000; /* Arrière-plan noir */
+            color: #ffffff; /* Texte blanc */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .register-container {
+            background-color: #333333;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            text-align: center;
+        }
+
+        .register-container h1 {
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .register-container input[type="text"],
+        .register-container input[type="password"],
+        .register-container input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #cccccc;
+            box-sizing: border-box;
+        }
+
+        .register-container button {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .register-container button:hover {
+            background-color: #0056b3;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .show-password {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+
+        .show-password input {
+            margin-right: 5px;
+        }
+
+        .switch-login {
+            margin-top: 10px;
+            color: #ffffff;
+        }
+
+        .switch-login a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .switch-login a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="register-container">
+    <h1>Bienvenue sur Mexicom</h1>
+    <input type="text" id="username" placeholder="Nom d'utilisateur" required>
+    <input type="email" id="email" placeholder="E-mail" required>
+    <div>
+        <input type="password" id="password" placeholder="Mot de passe" required>
+        <div class="show-password">
+            <input type="checkbox" id="show-password" onclick="togglePassword('password')">
+            <label for="show-password">Afficher le mot de passe</label>
+        </div>
+    </div>
+    <div>
+        <input type="password" id="confirm-password" placeholder="Confirmer le mot de passe" required>
+        <div class="show-password">
+            <input type="checkbox" id="show-confirm-password" onclick="togglePassword('confirm-password')">
+            <label for="show-confirm-password">Afficher le mot de passe</label>
+        </div>
+    </div>
+    <button onclick="register()">S'inscrire</button>
+    <div class="error-message" id="error-message">Tous les champs doivent être remplis et les mots de passe doivent correspondre.</div>
+    <div class="switch-login">Déjà un compte ? <a href="login.html">Se connecter</a></div>
+</div>
+
+<script>
+    function register() {
+        const username = document.getElementById('username').value;
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirm-password').value;
+
+        // Vérification des champs
+        if (username && email && password && (password === confirmPassword)) {
+            // Enregistrement dans le stockage local
+            localStorage.setItem('username', username);
+            localStorage.setItem('password', password);
+            window.location.href = 'login.html';
+        } else {
+            document.getElementById('error-message').style.display = 'block';
+        }
+    }
+
+    function togglePassword(id) {
+        const passwordField = document.getElementById(id);
+        passwordField.type = passwordField.type === 'password' ? 'text' : 'password';
+    }
+</script>
+
+</body>
+</html>

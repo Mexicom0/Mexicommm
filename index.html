@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding-bottom: 120px; /* espace pour le pied de page */
+            box-sizing: border-box;
+        }
+
+        .balance-table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .balance-table th, .balance-table td {
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #dddddd;
+        }
+
+        .balance-table th {
+            background-color: #007bff;
+            color: white;
+            font-size: 18px;
+        }
+
+        .balance-table td {
+            font-size: 24px;
+            color: #007bff;
+        }
+
+        #clock {
+            text-align: center;
+            font-size: 24px;
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+            width: 80%;
+        }
+
+        #date {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .button-container {
+            margin: 20px;
+            text-align: center;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            margin: 5px;
+        }
+
+        .button.recharge {
+            background-color: #000000;
+        }
+
+        .button.recharge:hover {
+            background-color: #333333;
+        }
+
+        .button.wallet {
+            background-color: #ffeb3b;
+            color: #000000;
+        }
+
+        .button.wallet:hover {
+            background-color: #fbc02d;
+        }
+
+        .info-text {
+            margin: 20px auto;
+            width: 80%;
+            font-size: 14px;
+            color: #333;
+            text-align: center;
+            background-color: #ffffff;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer {
+            width: 100%;
+            background-color: #ffffff;
+            padding: 20px;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-around;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            box-sizing: border-box;
+        }
+
+        .footer a {
+            text-align: center;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #000;
+            font-size: 16px;
+            background-color: #007bff;
+            transition: background-color 0.3s;
+        }
+
+        .footer a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<table class="balance-table">
+    <tr>
+        <th>Solde Principal</th>
+    </tr>
+    <tr>
+        <td>500 FCFA</td>
+    </tr>
+</table>
+
+<div id="clock">
+    <div id="date"></div>
+    <div id="time"></div>
+</div>
+
+<div class="button-container">
+    <a href="recharger.html" class="button recharge">Recharge</a>
+    <a href="portefeuille.html" class="button wallet">Portefeuille</a>
+</div>
+
+<div class="info-text">
+    Veuillez recharger votre compte et investir. Par jour, vous avez votre gain. Votre gain sera calculé par l'heure en fonction de votre investissement.<br><br>
+    Si vous investissez à 11h par exemple, votre gain peut être retiré à 11h. L'heure d'investissement est l'heure de votre retrait des gains. Merci.
+</div>
+
+<div class="info-text">Informations s'il vous plaît, une fois que vous avez investi, veuillez me contacter pour vous ajouter dans le groupe Mexicom. En cas de problème, contactez-moi.</div>
+
+<div class="footer">
+    <a href="index.html" class="button">Accueil</a>
+    <a href="investir.html" class="button">Investir</a>
+    <a href="compte.html" class="button">Mon Compte</a>
+</div>
+
+<script>
+    function updateClock() {
+        const now = new Date();
+        const day = String(now.getDate()).padStart(2, '0');
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const year = now.getFullYear();
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const seconds = String(now.getSeconds()).padStart(2, '0');
+
+        const currentDate = `${day}/${month}/${year}`;
+        const currentTime = `${hours}:${minutes}:${seconds}`;
+
+        document.getElementById('date').textContent = currentDate;
+        document.getElementById('time').textContent = currentTime;
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock(); // Initial call to set the time immediately
+</script>
+
+</body>
+</html>

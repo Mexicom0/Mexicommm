@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historique des Transactions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .transaction {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #dddddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .transaction p {
+            margin: 5px 0;
+        }
+
+        .date {
+            color: #888;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Historique des Transactions et de Retrait</h1>
+
+    <div class="transaction">
+        <p>Bonus d'inscription + 500 FCFA</p>
+        <p class="date"><?php echo date("d M Y H:i"); ?></p> <!-- Cette ligne nécessite PHP pour afficher la date actuelle -->
+    </div>
+
+        <p class="date"><?php echo date("d M Y H:i"); ?></p> <!-- Cette ligne nécessite PHP pour afficher la date actuelle -->
+    </div>
+        
+    <!-- Vous pouvez ajouter d'autres transactions ici -->
+</div>
+
+</body>
+</html>

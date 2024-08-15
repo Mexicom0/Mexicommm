@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portefeuille</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-text {
+            font-size: 18px;
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #dddddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .form-group input[type="submit"] {
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .form-group input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        #linked-info {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #000;
+            color: #fff;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .form-group input[type="button"] {
+            background-color: #dc3545;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin-left: 10px;
+        }
+
+        .form-group input[type="button"]:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Portefeuille</h1>
+
+    <div class="info-text">
+        Veuillez lier votre compte de retrait correctement s'il vous plaît.
+    </div>
+
+    <form id="wallet-form">
+        <div class="form-group">
+            <label for="numero-compte">Numéro de compte</label>
+            <input type="text" id="numero-compte" name="numero-compte" required>
+        </div>
+
+        <div class="form-group">
+            <label for="operateur">Opérateur</label>
+            <select id="operateur" name="operateur" required>
+                <option value="MTN">MTN</option>
+                <option value="Moov">Moov</option>
+                <option value="WAVE">WAVE</option>
+                <option value="Orange">Orange</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="code-secret">Code secret (4 chiffres)</label>
+            <input type="password" id="code-secret" name="code-secret" pattern="\d{4}" title="Le code secret doit être composé de 4 chiffres" required>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Soumettre">
+            <input type="button" id="reset-button" value="Réinitialiser">
+        </div>
+    </form>
+
+    <div id="linked-info">
+        <h2>Informations liées</h2>
+        <p id="linked-number"></p>
+        <p id="linked-operator"></p>
+    </div>
+</div>
+
+<script>
+    // Fonction pour afficher les informations liées
+    function displayLinkedInfo() {
+        var numeroCompte = localStorage.getItem('numero-compte');
+        var operateur = localStorage.getItem('operateur');
+
+        if (numeroCompte && operateur) {
+            document.getElementById('linked-number').textContent = 'Numéro de compte: ' + numeroCompte;
+            document.getElementById('linked-operator').textContent = 'Opérateur: ' + operateur;
+            document.getElementById('linked-info').style.display = 'block';
+        }
+    }
+
+    // Afficher les informations au chargement de la page
+    displayLinkedInfo();
+
+    document.getElementById('wallet-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Empêche l'envoi du formulaire
+
+        // Récupère les valeurs des champs du formulaire
+        var numeroCompte = document.getElementById('numero-compte').value;
+        var operateur = document.getElementById('operateur').value;
+
+        // Demande de confirmation avant soumission
+        var confirmation = confirm("Confirmez-vous que ces informations sont correctes?\nNuméro de compte: " + numeroCompte + "\nOpérateur: " + operateur);
+
+        if (confirmation) {
+            // Stocker les informations dans localStorage
+            localStorage.setItem('numero-compte', numeroCompte);
+            localStorage.setItem('operateur', operateur);
+
+            // Affiche les informations liées
+            displayLinkedInfo();
+        }
+    });
+
+    document.getElementById('reset-button').addEventListener('click', function() {
+        // Supprimer les informations du localStorage
+        localStorage.removeItem('numero-compte');
+        localStorage.removeItem('operateur');
+
+        // Cacher la section des informations liées
+        document.getElementById('linked-info').style.display = 'none';
+
+        // Réinitialiser les champs du formulaire
+        document.getElementById('wallet-form').reset();
+    });
+</script>
+
+</body>
+</html>
